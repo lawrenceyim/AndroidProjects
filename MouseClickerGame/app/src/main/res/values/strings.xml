@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Mouse Clicker Game</string>
+    <string name="counter_for_clicks">0</string>
+    <string name="number_of_times_clicked">Times clicked</string>
+</resources>
