@@ -32,12 +32,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculateResults(view: View): String {
-        val digitOperators = digitsOperators()
-        if (digitOperators.isEmpty()) return ""
-        val timesDivision = timesDivisionsCalculate(digitOperators)
-        if (timesDivision.isEmpty()) return ""
-        val result = addSubtractCalculate(timesDivision)
-        return result.toString()
+       try {
+           val digitOperators = digitsOperators()
+           if (digitOperators.isEmpty()) return ""
+           val timesDivision = timesDivisionsCalculate(digitOperators)
+           if (timesDivision.isEmpty()) return ""
+           val result = addSubtractCalculate(timesDivision)
+           return result.toString()
+       } catch (e: Exception) {
+           return "ERROR"
+       }
+
     }
 
     private fun addSubtractCalculate(passedList: MutableList<Any>): Float {
