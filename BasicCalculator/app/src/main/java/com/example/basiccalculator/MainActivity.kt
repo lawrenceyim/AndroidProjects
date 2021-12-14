@@ -5,13 +5,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
     private var input: TextView? = null
     private var output: TextView? = null
-    private var a: Int? = null
-    private var last: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,23 +25,22 @@ class MainActivity : AppCompatActivity() {
     fun onClear(view: View) {
         input?.text = null
         output?.text = null
-        a = null
     }
 
     fun onSolve(view: View) {
         output?.text = calculateResults(view)
     }
 
-    fun calculateResults(view: View): String {
+    private fun calculateResults(view: View): String {
         val digitOperators = digitsOperators()
         if (digitOperators.isEmpty()) return ""
         val timesDivision = timesDivisionsCalculate(digitOperators)
         if (timesDivision.isEmpty()) return ""
-        val result = addSubstractCalculate(timesDivision)
+        val result = addSubtractCalculate(timesDivision)
         return result.toString()
     }
 
-    private fun addSubstractCalculate(passedList: MutableList<Any>): Float {
+    private fun addSubtractCalculate(passedList: MutableList<Any>): Float {
         var result = passedList[0] as Float
         for (i in passedList.indices) {
             if (passedList[i] is Char && i != passedList.lastIndex) {
